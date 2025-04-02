@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Carta Convite</title>
+    <link rel="icon" type="image/png" href="https://img.icons8.com/?size=100&id=t5GRNS5yIsHP&format=png&color=000000">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .section-title {
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+            color: #444;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        .form-col {
+            flex: 1;
+        }
+    </style>
+    <div class="container">
+        <h1>Carta Convite</h1>
+        <form id="cartaForm">
+            <h3 class="section-title">Dados do Anfitrião</h3>
+            <label for="nomeAnfitriao">Nome do Anfitrião:</label>
+            <input type="text" id="nomeAnfitriao" required>
+            
+            <div class="form-row">
+                <div class="form-col">
+                    <label for="nacionalidadeAnfitriao">Nacionalidade:</label>
+                    <input type="text" id="nacionalidadeAnfitriao" required>
+                </div>
+                <div class="form-col">
+                    <label for="dataNascimentoAnfitriao">Data de Nascimento:</label>
+                    <input type="text" id="dataNascimentoAnfitriao" placeholder="DD/MM/AAAA" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-col">
+                    <label for="rnmAnfitriao">RNM:</label>
+                    <input type="text" id="rnmAnfitriao" required>
+                </div>
+                <div class="form-col">
+                    <label for="cpfAnfitriao">CPF:</label>
+                    <input type="text" id="cpfAnfitriao" placeholder="000.000.000-00" required>
+                </div>
+            </div>
+            
+            <label for="enderecoAnfitriao">Endereço:</label>
+            <input type="text" id="enderecoAnfitriao" placeholder="Rua, Avenida, etc." required>
+            
+            <div class="form-row">
+                <div class="form-col">
+                    <label for="numeroAnfitriao">Número:</label>
+                    <input type="text" id="numeroAnfitriao" required>
+                </div>
+                <div class="form-col">
+                    <label for="bairroAnfitriao">Bairro:</label>
+                    <input type="text" id="bairroAnfitriao" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-col">
+                    <label for="cidadeAnfitriao">Cidade:</label>
+                    <input type="text" id="cidadeAnfitriao" required>
+                </div>
+                <div class="form-col">
+                    <label for="estadoAnfitriao">Estado:</label>
+                    <input type="text" id="estadoAnfitriao" required>
+                </div>
+                <div class="form-col">
+                    <label for="cepAnfitriao">CEP:</label>
+                    <input type="text" id="cepAnfitriao" placeholder="00000-000" required>
+                </div>
+            </div>
+            
+            <h3 class="section-title">Dados do Convidado</h3>
+            
+            <div class="form-row">
+                <div class="form-col">
+                    <label for="relacionamento">Relacionamento:</label>
+                    <input type="text" id="relacionamento" placeholder="Irmão, Irmã, Primo, etc." required>
+                </div>
+            </div>
+            
+            <label for="nomeConvidado">Nome do Convidado:</label>
+            <input type="text" id="nomeConvidado" required>
+            
+            <div class="form-row">
+                <div class="form-col">
+                    <label for="nacionalidadeConvidado">Nacionalidade:</label>
+                    <input type="text" id="nacionalidadeConvidado" required>
+                </div>
+                <div class="form-col">
+                    <label for="dataNascimentoConvidado">Data de Nascimento:</label>
+                    <input type="text" id="dataNascimentoConvidado" placeholder="DD/MM/AAAA" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-col">
+                    <label for="passaporteConvidado">Passaporte:</label>
+                    <input type="text" id="passaporteConvidado" required>
+                </div>
+            </div>
+            
+            <label for="enderecoConvidado">Endereço no país de origem:</label>
+            <input type="text" id="enderecoConvidado" required>
+            
+            <h3 class="section-title">Data da Carta</h3>
+            <div class="form-row">
+                <div class="form-col">
+                    <label for="diaCarta">Dia:</label>
+                    <input type="number" id="diaCarta" min="1" max="31" required>
+                </div>
+                <div class="form-col">
+                    <label for="mesCarta">Mês:</label>
+                    <select id="mesCarta" required>
+                        <option value="Janeiro">Janeiro</option>
+                        <option value="Fevereiro">Fevereiro</option>
+                        <option value="Março">Março</option>
+                        <option value="Abril">Abril</option>
+                        <option value="Maio">Maio</option>
+                        <option value="Junho">Junho</option>
+                        <option value="Julho">Julho</option>
+                        <option value="Agosto">Agosto</option>
+                        <option value="Setembro">Setembro</option>
+                        <option value="Outubro">Outubro</option>
+                        <option value="Novembro">Novembro</option>
+                        <option value="Dezembro">Dezembro</option>
+                    </select>
+                </div>
+                <div class="form-col">
+                    <label for="anoCarta">Ano:</label>
+                    <input type="number" id="anoCarta" min="2024" value="2024" required>
+                </div>
+            </div>
+            
+            <button type="button" onclick="gerarPDF()">Gerar PDF</button>
+        </form>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        window.jsPDF = window.jspdf.jsPDF;
+        
+        $(document).ready(function(){
+            $('#cpfAnfitriao').mask('000.000.000-00');
+            $('#cepAnfitriao').mask('00000-000');
+            $('#dataNascimentoAnfitriao').mask('00/00/0000');
+            $('#dataNascimentoConvidado').mask('00/00/0000');
+        });
+        
+        function gerarPDF() {
+            const doc = new jsPDF();
+            
+            
+            const nomeAnfitriao = document.getElementById('nomeAnfitriao').value;
+            const nacionalidadeAnfitriao = document.getElementById('nacionalidadeAnfitriao').value;
+            const dataNascimentoAnfitriao = document.getElementById('dataNascimentoAnfitriao').value;
+            const rnmAnfitriao = document.getElementById('rnmAnfitriao').value;
+            const cpfAnfitriao = document.getElementById('cpfAnfitriao').value;
+            const enderecoAnfitriao = document.getElementById('enderecoAnfitriao').value;
+            const numeroAnfitriao = document.getElementById('numeroAnfitriao').value;
+            const bairroAnfitriao = document.getElementById('bairroAnfitriao').value;
+            const cidadeAnfitriao = document.getElementById('cidadeAnfitriao').value;
+            const estadoAnfitriao = document.getElementById('estadoAnfitriao').value;
+            const cepAnfitriao = document.getElementById('cepAnfitriao').value;
+            
+            
+            const relacionamento = document.getElementById('relacionamento').value;
+            const nomeConvidado = document.getElementById('nomeConvidado').value;
+            const nacionalidadeConvidado = document.getElementById('nacionalidadeConvidado').value;
+            const dataNascimentoConvidado = document.getElementById('dataNascimentoConvidado').value;
+            const passaporteConvidado = document.getElementById('passaporteConvidado').value;
+            const enderecoConvidado = document.getElementById('enderecoConvidado').value;
+            
+            
+            const diaCarta = document.getElementById('diaCarta').value;
+            const mesCarta = document.getElementById('mesCarta').value;
+            const anoCarta = document.getElementById('anoCarta').value;
+            
+          
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(16);
+            doc.text("CARTA CONVITE", 105, 20, {align: "center"});
+            doc.setLineWidth(0.5);
+            doc.line(20, 25, 190, 25);
+            
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(12);
+            
+            let y = 40;
+            
+           
+            doc.text("EU, " + nomeAnfitriao + ", " + nacionalidadeAnfitriao + ", nascido(a) no dia " + dataNascimentoAnfitriao + 
+                     ", titular do RNM: " + rnmAnfitriao + "; CPF: " + cpfAnfitriao + " Residente e domiciliado(a) na " + 
+                     enderecoAnfitriao + ", nº " + numeroAnfitriao + ", CEP: " + cepAnfitriao + " / Bairro: " + bairroAnfitriao + 
+                     ", Cidade: " + cidadeAnfitriao + " / " + estadoAnfitriao, 20, y, {maxWidth: 170});
+            
+          
+            y += 25;
+            
+            
+            doc.setFont("helvetica", "bold");
+            doc.text("Convido", 105, y, {align: "center"});
+            doc.setFont("helvetica", "normal");
+            
+            y += 10;
+            
+            
+            doc.text("Meu(minha) " + relacionamento + ":", 20, y);
+            y += 10;
+            
+            doc.text(nomeConvidado + ", " + nacionalidadeConvidado + ", nascido(a) no dia " + dataNascimentoConvidado + 
+                     ", titular do passaporte: " + passaporteConvidado, 20, y, {maxWidth: 170});
+            y += 10;
+            
+            doc.text("Residente: " + enderecoConvidado, 20, y);
+            y += 20;
+            
+          
+            doc.text("Comprometo-me a assumir todas as despesas de meu(minha) convidado(a) com hospedagem, alimentação e outras que se fizerem necessárias durante sua estadia.", 20, y, {maxWidth: 170});
+            y += 20;
+            
+            
+            doc.text("Peço a vossa excelência, diretor geral embaixador, que dê deferimento ao meu pedido.", 20, y, {maxWidth: 170});
+            y += 20;
+            
+           
+            doc.text(cidadeAnfitriao + ", " + diaCarta + " de " + mesCarta + " de " + anoCarta, 20, y);
+            y += 25;
+            
+            doc.line(20, y, 120, y);
+            y += 10;
+            
+            doc.text(nomeAnfitriao, 70, y, {align: "center"});
+            
+            doc.save('carta_convite.pdf');
+        }
+    </script>
+</body>
+</html>
