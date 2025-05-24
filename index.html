@@ -152,6 +152,17 @@
                     <label for="passaporteConvidado">Passaporte:</label>
                     <input type="text" id="passaporteConvidado" required>
                 </div>
+                <div class="form-col">
+                    <label for="identificacaoUnica">Número de Identificação Única:</label>
+                    <input type="text" id="identificacaoUnica" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-col">
+                    <label for="numeroCartao">Número do Cartão:</label>
+                    <input type="text" id="numeroCartao" required>
+                </div>
             </div>
             
             <label for="enderecoConvidado">Endereço no país de origem:</label>
@@ -191,7 +202,7 @@
     </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script>
+   <script>
         window.jsPDF = window.jspdf.jsPDF;
         
         $(document).ready(function(){
@@ -203,7 +214,6 @@
         
         function gerarPDF() {
             const doc = new jsPDF();
-            
             
             const nomeAnfitriao = document.getElementById('nomeAnfitriao').value;
             const nacionalidadeAnfitriao = document.getElementById('nacionalidadeAnfitriao').value;
@@ -217,20 +227,20 @@
             const estadoAnfitriao = document.getElementById('estadoAnfitriao').value;
             const cepAnfitriao = document.getElementById('cepAnfitriao').value;
             
-            
             const relacionamento = document.getElementById('relacionamento').value;
             const nomeConvidado = document.getElementById('nomeConvidado').value;
             const nacionalidadeConvidado = document.getElementById('nacionalidadeConvidado').value;
             const dataNascimentoConvidado = document.getElementById('dataNascimentoConvidado').value;
             const passaporteConvidado = document.getElementById('passaporteConvidado').value;
+            const identificacaoUnica = document.getElementById('identificacaoUnica').value;
+            const numeroCartao = document.getElementById('numeroCartao').value;
             const enderecoConvidado = document.getElementById('enderecoConvidado').value;
-            
             
             const diaCarta = document.getElementById('diaCarta').value;
             const mesCarta = document.getElementById('mesCarta').value;
             const anoCarta = document.getElementById('anoCarta').value;
             
-          
+
             doc.setFont("helvetica", "bold");
             doc.setFontSize(16);
             doc.text("CARTA CONVITE", 105, 20, {align: "center"});
@@ -242,15 +252,12 @@
             
             let y = 40;
             
-           
             doc.text("EU, " + nomeAnfitriao + ", " + nacionalidadeAnfitriao + ", nascido(a) no dia " + dataNascimentoAnfitriao + 
                      ", titular do RNM: " + rnmAnfitriao + "; CPF: " + cpfAnfitriao + " Residente e domiciliado(a) na " + 
                      enderecoAnfitriao + ", nº " + numeroAnfitriao + ", CEP: " + cepAnfitriao + " / Bairro: " + bairroAnfitriao + 
                      ", Cidade: " + cidadeAnfitriao + " / " + estadoAnfitriao, 20, y, {maxWidth: 170});
             
-          
             y += 25;
-            
             
             doc.setFont("helvetica", "bold");
             doc.text("Convido", 105, y, {align: "center"});
@@ -258,28 +265,32 @@
             
             y += 10;
             
-            
             doc.text("Meu(minha) " + relacionamento + ":", 20, y);
-            y += 10;
+            y += 7;
             
-            doc.text(nomeConvidado + ", " + nacionalidadeConvidado + ", nascido(a) no dia " + dataNascimentoConvidado + 
-                     ", titular do passaporte: " + passaporteConvidado, 20, y, {maxWidth: 170});
-            y += 10;
+            doc.text(nomeConvidado + ", " + nacionalidadeConvidado + ", nascido(a) no dia " + dataNascimentoConvidado, 20, y);
+            y += 7;
+            
+            doc.text("Titular do passaporte: " + passaporteConvidado, 20, y);
+            y += 7;
+            
+            doc.text("Número de identificação única: " + identificacaoUnica, 20, y);
+            y += 7;
+            
+            doc.text("Número do cartão: " + numeroCartao, 20, y);
+            y += 7;
             
             doc.text("Residente: " + enderecoConvidado, 20, y);
-            y += 20;
+            y += 15;
             
-          
             doc.text("Comprometo-me a assumir todas as despesas de meu(minha) convidado(a) com hospedagem, alimentação e outras que se fizerem necessárias durante sua estadia.", 20, y, {maxWidth: 170});
             y += 20;
-            
             
             doc.text("Peço a vossa excelência, diretor geral embaixador, que dê deferimento ao meu pedido.", 20, y, {maxWidth: 170});
             y += 20;
             
-           
             doc.text(cidadeAnfitriao + ", " + diaCarta + " de " + mesCarta + " de " + anoCarta, 20, y);
-            y += 25;
+            y += 15;
             
             doc.line(20, y, 120, y);
             y += 10;
